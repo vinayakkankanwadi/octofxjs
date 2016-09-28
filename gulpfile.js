@@ -51,7 +51,7 @@ gulp.task('patch', function() { return inc('patch'); })
 gulp.task('feature', function() { return inc('minor'); })
 gulp.task('release', function() { return inc('major'); })
 
-gulp.task('push', function() { git.push('origin','gulp'); })
+gulp.task('push', function() { git.push('origin/gulp'); })
 
 gulp.task('less', function() {
   return gulp.src('./src/less/**/*.less')
