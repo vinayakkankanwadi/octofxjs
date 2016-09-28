@@ -8,6 +8,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     clean = require('gulp-clean');
 
+var bump = require('gulp-bump');
+var octo = require('@octopusdeploy/gulp-octo');
+
 gulp.task('less', function() {
   return gulp.src('./src/less/**/*.less')
       .pipe(less())
@@ -34,4 +37,16 @@ gulp.task('default', ['less', 'scripts'], function() {
 gulp.task('clean-public', function () {
   return gulp.src(['./public/js', './public/css'], {read: false})
       .pipe(clean());
+});
+
+gulp.task('bump', function(){
+  return gulp.src('./package.json')
+      .pipe(bump({type: 'patch'}))
+      .pipe(gulp.dest('./'));
+});
+ 
+gulp.task('publish', ['bump', 'build'], function () {
+  return gulp.src(['**/*', '!bin{,/**}', '!src{,/**}', '!gulpfile.js'])
+      .pipe(octo.pack())
+      .pipe(octo.push({apiKey: 'API-37YDE3A206MDYXKVLX8LVDVQCI', host: 'http://localhost:9111'}));
 });
