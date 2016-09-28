@@ -54,7 +54,7 @@ gulp.task('push', function() {
 
 git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs');
 		
-git.push('origin'); 
+git.push('origin/gulp'); 
 })
 
 gulp.task('less', function() {
