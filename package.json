@@ -1,6 +1,6 @@
 {
   "name": "octofxjs",
-  "version": "3.0.0",
+  "version": "4.0.5",
   "description": "A sample project to demonstrate packaging and pushing Node.js projects",
   "author": "Octopus Deploy <support@octopus.com> (http://octopus.com/)",
   "license": "MIT",

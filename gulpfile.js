@@ -36,10 +36,6 @@ function inc(importance) {
         .pipe(bump({type: importance}))
         // save it back to filesystem 
         .pipe(gulp.dest('./'))
-
-		.pipe(git.exec({args: 'config user.name ' + 'vinayakkankanwadi'}))
-		.pipe(git.exec({args: 'config user.email ' + 'vinayakkankanwadi@email.com'}))
-  
 	   // commit the changed version number 
         .pipe(git.commit('bumps package version'))
  
@@ -88,7 +84,7 @@ gulp.task('bump', function(){
 });
  
 //gulp.task('publish', ['bump', 'build'], function () {
-gulp.task('publish', ['release', 'build'], function () {
+gulp.task('publish', ['patch', 'build'], function () {
   return gulp.src(['**/*', '!bin{,/**}', '!src{,/**}', '!gulpfile.js'])
       .pipe(octo.pack())
       .pipe(octo.push({apiKey: 'API-37YDE3A206MDYXKVLX8LVDVQCI', host: 'http://localhost:9111'}));
