@@ -40,7 +40,7 @@ function inc(importance) {
         //.pipe(git.commit('-a bumps package version'))
 		.pipe(git.commit('bumps package version', {args: '-am'}))
 		//.pipe(git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs'))
-		.pipe(git.push('origin', 'gulp', {args: " -f"}))
+		//.pipe(git.push('origin', 'gulp', {args: " -f"}))
 		// read only one file to get the version number 
         .pipe(filter('package.json'))
         // **tag it in the repository** 
@@ -50,6 +50,8 @@ function inc(importance) {
 gulp.task('patch', function() { return inc('patch'); })
 gulp.task('feature', function() { return inc('minor'); })
 gulp.task('release', function() { return inc('major'); })
+
+gulp.task('push', function() { git.push('origin','gulp'); })
 
 gulp.task('less', function() {
   return gulp.src('./src/less/**/*.less')
@@ -86,7 +88,7 @@ gulp.task('bump', function(){
 });
  
 //gulp.task('publish', ['bump', 'build'], function () {
-gulp.task('publish', ['patch', 'build'], function () {
+gulp.task('publish', ['patch', 'push', 'build'], function () {
   return gulp.src(['**/*', '!bin{,/**}', '!src{,/**}', '!gulpfile.js'])
       .pipe(octo.pack())
       .pipe(octo.push({apiKey: 'API-37YDE3A206MDYXKVLX8LVDVQCI', host: 'http://localhost:9111'}));
