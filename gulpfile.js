@@ -36,7 +36,11 @@ function inc(importance) {
         .pipe(bump({type: importance}))
         // save it back to filesystem 
         .pipe(gulp.dest('./'))
-        // commit the changed version number 
+
+		.pipe(git.exec({args: 'config user.name ' + 'vinayakkankanwadi'}))
+		.pipe(git.exec({args: 'config user.email ' + 'vinayakkankanwadi@email.com'}))
+  
+	   // commit the changed version number 
         .pipe(git.commit('bumps package version'))
  
         // read only one file to get the version number 
