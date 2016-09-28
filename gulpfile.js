@@ -39,6 +39,7 @@ function inc(importance) {
 	   // commit the changed version number 
         //.pipe(git.commit('-a bumps package version'))
 		.pipe(git.commit('bumps package version', {args: '-am'}))
+		.pipe(git.push())
 		// read only one file to get the version number 
         .pipe(filter('package.json'))
         // **tag it in the repository** 
