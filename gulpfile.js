@@ -52,8 +52,11 @@ gulp.task('release', function() { return inc('major'); })
 
 gulp.task('push', function() { 
 
-git.addRemote('origin', 'https://github.com/vinayakkankanwadi/octofxjs');
-		
+
+git.exec({args: 'config --global user.name Vinayak Kankanwadi'});
+git.exec({args: 'config --global user.email vinayakkankanwadi@hotmail.com'});
+git.exec({args: 'remote set-url origin ' + 'https://github.com/vinayakkankanwadi/octofxjs.git'});
+  
 git.push('origin', ['master', 'gulp']); 
 })
 
