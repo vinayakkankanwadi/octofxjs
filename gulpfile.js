@@ -39,7 +39,6 @@ function inc(importance) {
 	   // commit the changed version number 
         //.pipe(git.commit('-a bumps package version'))
 		.pipe(git.commit('bumps package version', {args: '-am'}))
-		.pipe(git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs'))
 		//.pipe(git.push('origin', 'gulp', {args: " -f"}))
 		// read only one file to get the version number 
         .pipe(filter('package.json'))
@@ -51,7 +50,12 @@ gulp.task('patch', function() { return inc('patch'); })
 gulp.task('feature', function() { return inc('minor'); })
 gulp.task('release', function() { return inc('major'); })
 
-gulp.task('push', function() { git.push('origin','gulp'); })
+gulp.task('push', function() { 
+
+git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs');
+		
+git.push('origin'); 
+})
 
 gulp.task('less', function() {
   return gulp.src('./src/less/**/*.less')
