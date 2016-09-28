@@ -92,7 +92,7 @@ gulp.task('bump', function(){
 });
  
 //gulp.task('publish', ['bump', 'build'], function () {
-gulp.task('publish', ['patch', 'push', 'build'], function () {
+gulp.task('publish', ['patch', 'build', 'push'], function () {
   return gulp.src(['**/*', '!bin{,/**}', '!src{,/**}', '!gulpfile.js'])
       .pipe(octo.pack())
       .pipe(octo.push({apiKey: 'API-37YDE3A206MDYXKVLX8LVDVQCI', host: 'http://localhost:9111'}));
