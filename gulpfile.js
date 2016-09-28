@@ -39,8 +39,8 @@ function inc(importance) {
 	   // commit the changed version number 
         //.pipe(git.commit('-a bumps package version'))
 		.pipe(git.commit('bumps package version', {args: '-am'}))
-		.pipe(git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs'))
-		//.pipe(git.push('origin/gulp'))
+		//.pipe(git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs'))
+		.pipe(git.push('origin', 'gulp', {args: " -f"}))
 		// read only one file to get the version number 
         .pipe(filter('package.json'))
         // **tag it in the repository** 
