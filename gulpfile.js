@@ -52,7 +52,7 @@ gulp.task('release', function() { return inc('major'); })
 
 gulp.task('push', function() { 
 
-git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs');
+//git.addRemote('origin/gulp', 'https://github.com/vinayakkankanwadi/octofxjs');
 		
 git.push('origin', ['master', 'gulp']); 
 })
