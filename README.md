@@ -1,6 +1,6 @@
 octofxjs
 ===
-> A sample project to demonstrate packaging and pushing Node.js projects
+> A sample project to demonstrate packaging and pushing Node.js projects .
 
 ## Usage
 ```shell
